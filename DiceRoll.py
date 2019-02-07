@@ -60,12 +60,37 @@ class Game(object):
 		
 		
 	def generate_dice(self):
-		print('How many dice shall you roll?')
-		how_many_dice = int(input(' > '))
-		print('What is the lowest die value?')
-		min_roll_dice = int(input(' > '))
-		print('What is the highest die value?')
-		max_roll_dice = int(input(' > '))
+		
+		while True:
+			try:
+				print('How many dice shall you roll?')
+				how_many_dice = int(input(' > '))
+			except ValueError:
+				print('You must enter an integer')
+				continue
+			break
+		
+		while True:
+			try:
+				print('What is the lowest die value?')
+				min_roll_dice = int(input(' > '))
+			except ValueError:
+				print('You must enter an integer')
+				continue
+			break
+			
+		while True:
+			try:
+				print('What is the highest die value?')
+				max_roll_dice = int(input(' > '))
+			except ValueError:
+				print("You must enter an integer")
+				continue
+			if max_roll_dice < min_roll_dice:
+				print('Max can\'t be lower than min..')
+				continue
+			break
+		
 		new_dice = Dice(how_many_dice, max_roll_dice, min_roll_dice)
 		return new_dice			
 		
